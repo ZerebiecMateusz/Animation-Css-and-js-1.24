@@ -1,0 +1,127 @@
+.room {
+    position: relative;
+    margin: auto;
+    margin-top: 10vh;
+    width: 80vw;
+    height: 80vh;
+    border: 3px solid black;
+    overflow: hidden;
+}
+.ball {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: cadetblue;
+    bottom: 28%;
+    left: 20%;
+    /* animation: fly-ball-x 1s cubic-bezier(0.075, 0.82, 0.165, 1), fly-ball-y 1s linear; */
+}
+.spring {
+    position: absolute;
+    bottom: calc(20% + 15px);
+    height: 4%;
+    width: 30%;
+    background-color: #d37c20;
+    bottom: 30%;
+    left: -11%;
+    animation: spring 1.5s infinite alternate ease-out;
+    animation-play-state: paused;
+    /* animation: release-spring .2s infinite ; */
+}
+.column {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    border-bottom: calc(0.27 * 80vh) green solid;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+}
+
+.panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40vw;
+  }
+  
+  .btn-action {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: brown;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: arial;
+    line-height: 250%;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color .3s;
+  }
+  
+  @media (max-width: 800px) {
+    .panel {
+      width: auto;
+      left: 20px;
+    }
+  }
+  .btn-action:hover {
+    background-color: cadetblue;
+  }
+  
+  .bar {
+    /* height: 30px; */
+    margin-top: 30px;
+    box-shadow: 0 0 3px 0 darkred;
+  }
+  
+  .fill {
+    width: 5%;
+    height: 30px;
+    background-color: darkred;
+    animation: fill 1.5s infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-out;
+    animation-play-state: paused;
+  }
+
+  :root {
+    --spring-left: -25%;
+    --ball-y: 0;
+    --power-x: 90%
+
+  }
+
+@keyframes fill {
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes spring {
+    100% {
+        left: -25%;
+    }
+}
+
+@keyframes release-spring {
+    0% {
+        left: var(--spring-left, -25%);
+    }
+    100% {
+        left: -8%;
+    }
+}
+
+@keyframes fly-ball-x {
+    100% {
+        left: var(--power-x, 100%);
+    }
+}
+@keyframes fly-ball-y {
+    100% {
+        bottom: var(--ball-y, 0);
+    }
+}
+  
